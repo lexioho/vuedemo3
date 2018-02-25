@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>hello vue</h1>
+        <p>
+            <!--
+                使用<router-link></router-link> 这个组件来导航
+                通过传入to属性 来指定链接 
+                <router-link></router-link>会被渲染成一个 a 标签
+
+              -->
+            <router-link to="/foo">go to foo</router-link>
+            <router-link to="/bar">go to bar</router-link>
+
+        </p>
+         <!-- 路由出口  -->
+            <!-- 路由匹配到的组件将渲染在这里  -->
+            <router-view></router-view>
+    </div>
+    <script>
+        // 4。定义路由组件
+        var Foo={template:"<div>foo</div>"};
+        var Bar={template:"<div>bar</div>"};
+
+        
+        // 3.定义路由
+        // 每个路由应该映射一个组件 其中的 component可以是通过Vue。entend（）创建的组件构造器
+        // 或者也可以只是一个组件配置对象
+        var routes=[
+            {path:"/foo",component:Foo},
+            {path:"/bar",component:Bar}
+        ];
+
+
+
+        // 如果使用模块化的机制编程 导入vue和vuerouter 要调用vue.use(vuerouter)
+
+
+        // 2。创建router实例
+        // var router1= new VueRouter({
+        //     routes
+        // })
+        var router = new VueRouter({
+        routes // （缩写）相当于 routes: routes
+        })
+
+        // 1。 创建和挂载实例
+        var app = new Vue({
+            router
+        }).$mount("#app")
+    </script>
+</body>
+</html>
